@@ -4,6 +4,10 @@ class Game():
         ['a1','a2','a3'],['b1','b2','b3'],['c1','c2','c3'],
         ['a1','b2','c3'],['c1','b2','a3']
     ]
+    player_x_wins = 0
+    player_o_wins = 0
+    player_x_losses = 0
+    player_o_losses = 0
 
     def __init__(self):
         self.turn = 'X'
@@ -41,6 +45,14 @@ class Game():
             print("The game has ended in a tie!")
         elif(self.winner):
             print(f"{self.winner} wins!")
+            if(self.winner == "X"):
+                self.player_o_losses += 1
+                self.player_x_wins += 1
+            elif(self.winner == "O"):
+                self.player_o_wins += 1
+                self.player_x_losses += 1
+            print(f"X player wins: {self.player_x_wins}, X player losses: {self.player_x_losses}")
+            print(f"O player wins: {self.player_o_wins}, O player losses: {self.player_o_losses}")
             rematch = input("Would you like to play again? (Y/N/Yes/No) ").lower()
             if(rematch == "y" or rematch == "yes"):
                 self.__init__()
