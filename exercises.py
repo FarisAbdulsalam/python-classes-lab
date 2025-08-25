@@ -41,6 +41,10 @@ class Game():
             print("The game has ended in a tie!")
         elif(self.winner):
             print(f"{self.winner} wins!")
+            rematch = input("Would you like to play again? (Y/N/Yes/No) ").lower()
+            if(rematch == "y" or rematch == "yes"):
+                self.__init__()
+                self.play_game()
         else:
             print(f"It's player {self.turn}'s turn.")
 
